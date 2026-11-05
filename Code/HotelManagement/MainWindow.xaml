@@ -1,0 +1,27 @@
+<Window x:Class="HotelManagement.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Khách sạn tình yêu | Hệ thống quản lý" Width="1440" Height="920" MinWidth="1180" MinHeight="760"
+        WindowStartupLocation="CenterScreen" Background="{StaticResource PageBackground}" FontFamily="Segoe UI" FontSize="13">
+    <Grid><Grid.RowDefinitions><RowDefinition Height="68"/><RowDefinition Height="*"/></Grid.RowDefinitions>
+        <Border Grid.Row="0" Background="White" BorderBrush="{StaticResource Line}" BorderThickness="0,0,0,1"><Grid Margin="28,0"><Grid.ColumnDefinitions><ColumnDefinition Width="280"/><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center"><Border Width="34" Height="34" CornerRadius="8" Background="{StaticResource Navy}"><TextBlock Text="TY" Foreground="White" FontWeight="Bold" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center"/></Border><TextBlock Text="Khách sạn tình yêu" Foreground="{StaticResource Navy}" FontSize="18" FontWeight="Bold" VerticalAlignment="Center" Margin="10,0,0,0"/></StackPanel>
+            <TextBlock x:Name="RoleHeader" Grid.Column="1" Text="KHU VỰC KHÁCH HÀNG" Foreground="{StaticResource Muted}" FontSize="10" FontWeight="Bold" VerticalAlignment="Center"/>
+            <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center"><Border Width="32" Height="32" CornerRadius="16" Background="{StaticResource BlueTint}"><TextBlock x:Name="AvatarText" Text="MA" Foreground="{StaticResource Blue}" FontSize="10" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/></Border><StackPanel Margin="9,0,16,0" VerticalAlignment="Center"><TextBlock x:Name="UserNameText" Text="Nguyễn Minh Anh" Foreground="{StaticResource Navy}" FontWeight="SemiBold"/><TextBlock x:Name="UserRoleText" Text="Khách hàng" Foreground="{StaticResource Muted}" FontSize="10"/></StackPanel><Button Content="Đăng xuất" Style="{StaticResource OutlineButton}" Padding="10,7" Click="Logout_Click"/></StackPanel>
+        </Grid></Border>
+        <Grid Grid.Row="1"><Grid.ColumnDefinitions><ColumnDefinition Width="218"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+            <Border Grid.Column="0" Background="White" BorderBrush="{StaticResource Line}" BorderThickness="0,0,1,0"><DockPanel Margin="14,22"><StackPanel DockPanel.Dock="Top">
+                <TextBlock x:Name="CustomerGroupLabel" Text="KHÁCH HÀNG" Foreground="#8996A1" FontSize="10" FontWeight="Bold" Margin="10,0,0,8"/>
+                <Button x:Name="RoomsButton" Style="{StaticResource NavButton}" Tag="Selected" Click="Rooms_Click" Content="▤   Tìm phòng"/>
+                <Button x:Name="BookingButton" Style="{StaticResource NavButton}" Click="Booking_Click" Content="▣   Đặt phòng của tôi"/>
+                <Button x:Name="ServicesButton" Style="{StaticResource NavButton}" Click="Services_Click" Content="◷   Dịch vụ lưu trú"/>
+                <TextBlock x:Name="StaffGroupLabel" Text="LỄ TÂN" Foreground="#8996A1" FontSize="10" FontWeight="Bold" Margin="10,22,0,8"/>
+                <Button x:Name="ReceptionButton" Style="{StaticResource NavButton}" Click="Reception_Click" Content="▦   Bảng điều hành"/>
+                <Button x:Name="StaffServicesButton" Style="{StaticResource NavButton}" Click="Services_Click" Content="◷   Dịch vụ lưu trú"/>
+                <TextBlock x:Name="AdminGroupLabel" Text="QUẢN TRỊ HỆ THỐNG" Foreground="#8996A1" FontSize="10" FontWeight="Bold" Margin="10,22,0,8"/>
+                <Button x:Name="AdminButton" Style="{StaticResource NavButton}" Click="Admin_Click" Content="⚙   Quản lý khách sạn"/>
+            </StackPanel><StackPanel DockPanel.Dock="Bottom" Margin="10,0,8,8"><Border Height="1" Background="{StaticResource Line}" Margin="0,0,0,14"/><TextBlock Text="Khách sạn tình yêu" Foreground="{StaticResource Navy}" FontSize="11" FontWeight="SemiBold"/><TextBlock Text="Hệ thống quản lý lưu trú" Foreground="{StaticResource Muted}" FontSize="10" Margin="0,4,0,0"/></StackPanel></DockPanel></Border>
+            <Border Grid.Column="1" Background="{StaticResource PageBackground}"><Frame x:Name="ContentFrame" NavigationUIVisibility="Hidden" Background="Transparent"/></Border>
+        </Grid>
+    </Grid>
+</Window>

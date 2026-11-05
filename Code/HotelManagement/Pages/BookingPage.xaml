@@ -1,0 +1,38 @@
+<Page x:Class="HotelManagement.Pages.BookingPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Background="{StaticResource PageBackground}">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="32,26,32,34">
+            <TextBlock Text="Đặt phòng  ›  Thông tin khách  ›  Xác nhận" Foreground="{StaticResource Muted}" FontSize="12" />
+            <Grid Margin="0,13,0,20"><Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions><StackPanel><TextBlock Text="BƯỚC 2 TRÊN 2" Foreground="#718292" FontSize="10" FontWeight="Bold" /><TextBlock Text="Xác nhận thông tin đặt phòng" Foreground="{StaticResource Navy}" FontSize="25" FontWeight="Bold" Margin="0,5,0,4" /><TextBlock Text="Kiểm tra thông tin trước khi gửi yêu cầu đến khách sạn." Foreground="{StaticResource Muted}" /></StackPanel><StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center"><Border Width="27" Height="27" CornerRadius="14" Background="#28699B"><TextBlock Text="1" Foreground="White" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" /></Border><Border Width="45" Height="1" Background="#CBD6DF" /><Border Width="27" Height="27" CornerRadius="14" Background="#28699B"><TextBlock Text="2" Foreground="White" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" /></Border></StackPanel></Grid>
+            <Grid>
+                <Grid.ColumnDefinitions><ColumnDefinition Width="1.55*" /><ColumnDefinition Width="18" /><ColumnDefinition Width=".9*" /></Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0">
+                    <Border Background="White" BorderBrush="{StaticResource Line}" BorderThickness="1" CornerRadius="9" Padding="19" Margin="0,0,0,14">
+                        <StackPanel>
+                            <Grid Margin="0,0,0,16"><Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions><StackPanel><TextBlock Text="Thông tin lưu trú" Foreground="{StaticResource Navy}" FontSize="17" FontWeight="Bold" /><TextBlock Text="Phòng và thời gian bạn đã chọn" Foreground="{StaticResource Muted}" FontSize="12" Margin="0,3,0,0" /></StackPanel><Button Grid.Column="1" Content="Thay đổi" Style="{StaticResource OutlineButton}" Padding="10,6" HorizontalAlignment="Right" /></Grid>
+                            <Border Background="#F7F9FB" BorderBrush="{StaticResource Line}" BorderThickness="1" CornerRadius="7" Padding="12" Margin="0,0,0,16">
+                                <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="64" /><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions><Border Width="56" Height="48" CornerRadius="5" Background="#AFA68F" /><StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="12,0,0,0"><TextBlock x:Name="SelectedRoomTypeText" Text="" Foreground="{StaticResource Navy}" FontWeight="Bold" /><TextBlock x:Name="StayDetailsText" Text="" Foreground="{StaticResource Muted}" FontSize="11" Margin="0,3,0,0" /></StackPanel><Border Grid.Column="2" Background="{StaticResource GreenTint}" CornerRadius="12" Padding="9,5" VerticalAlignment="Center"><TextBlock Text="Còn phòng" Foreground="{StaticResource Green}" FontSize="10" FontWeight="SemiBold" /></Border></Grid>
+                            </Border>
+                            <Grid>
+                                <Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="12" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions><RowDefinition Height="Auto" /><RowDefinition Height="12" /><RowDefinition Height="Auto" /><RowDefinition Height="12" /><RowDefinition Height="Auto" /><RowDefinition Height="12" /><RowDefinition Height="Auto" /></Grid.RowDefinitions>
+                                <StackPanel Grid.Row="0" Grid.Column="0"><TextBlock Text="Họ và tên" Style="{StaticResource FieldLabel}" /><TextBox x:Name="GuestNameBox" Style="{StaticResource FieldBox}" /></StackPanel>
+                                <StackPanel Grid.Row="0" Grid.Column="2"><TextBlock Text="Số điện thoại" Style="{StaticResource FieldLabel}" /><TextBox x:Name="PhoneBox" Style="{StaticResource FieldBox}" /></StackPanel>
+                                <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"><TextBlock Text="Email nhận xác nhận" Style="{StaticResource FieldLabel}" /><TextBox x:Name="EmailBox" Style="{StaticResource FieldBox}" /></StackPanel>
+                                <StackPanel Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3"><TextBlock Text="Ghi chú cho khách sạn (không bắt buộc)" Style="{StaticResource FieldLabel}" /><TextBox x:Name="NoteBox" Height="54" Padding="9,7" VerticalContentAlignment="Top" BorderBrush="#CBD6DF" BorderThickness="1" /></StackPanel>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+                    <Border Background="White" BorderBrush="{StaticResource Line}" BorderThickness="1" CornerRadius="9" Padding="15"><StackPanel Orientation="Horizontal"><Border Width="22" Height="22" CornerRadius="11" BorderBrush="#9EB2C3" BorderThickness="1" Margin="0,0,11,0"><TextBlock Text="i" Foreground="#446987" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" /></Border><StackPanel><TextBlock Text="Chính sách đặt phòng" Foreground="{StaticResource Navy}" FontWeight="SemiBold" /><TextBlock Text="Thanh toán tại quầy khi nhận phòng. Hủy miễn phí trước ngày nhận phòng 48 giờ." Foreground="{StaticResource Muted}" FontSize="11" TextWrapping="Wrap" Margin="0,3,0,0" /></StackPanel></StackPanel></Border>
+                </StackPanel>
+                <Border Grid.Column="2" Background="White" BorderBrush="{StaticResource Line}" BorderThickness="1" CornerRadius="9" Padding="19" VerticalAlignment="Top">
+                    <StackPanel><TextBlock Text="Chi phí dự kiến" Foreground="{StaticResource Navy}" FontSize="17" FontWeight="Bold" Margin="0,0,0,12" /><Grid Margin="0,0,0,12"><Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions><TextBlock x:Name="RoomSubtotalLabel" Text="" Foreground="{StaticResource Muted}" FontSize="12" /><TextBlock x:Name="RoomSubtotalText" Grid.Column="1" Text="" HorizontalAlignment="Right" FontSize="12" /></Grid><Border Height="1" Background="{StaticResource Line}" /><Grid Margin="0,14,0,14"><Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions><TextBlock Text="Tổng cộng" Foreground="{StaticResource Navy}" FontWeight="Bold" FontSize="14" /><TextBlock x:Name="GrandTotalText" Grid.Column="1" Text="" Foreground="{StaticResource Navy}" FontWeight="Bold" FontSize="14" HorizontalAlignment="Right" /></Grid><Button x:Name="SubmitBookingButton" Style="{StaticResource PrimaryButton}" Content="Gửi yêu cầu đặt phòng" HorizontalContentAlignment="Center" Click="SubmitBooking_Click" /><TextBlock Text="Bạn chưa bị tính phí ở bước này. Khách sạn sẽ gửi xác nhận sau khi tiếp nhận yêu cầu." Foreground="{StaticResource Muted}" FontSize="10" TextWrapping="Wrap" Margin="0,12,0,0" /></StackPanel>
+                </Border>
+            </Grid>
+        </StackPanel>
+    </ScrollViewer>
+</Page>
+
+

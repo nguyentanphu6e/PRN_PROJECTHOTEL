@@ -1,0 +1,63 @@
+<Page x:Class="HotelManagement.Pages.ServicesPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Background="{StaticResource PageBackground}">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="32,26,32,34">
+            <TextBlock x:Name="AudienceHeaderText" Text="LỄ TÂN  ›  DỊCH VỤ LƯU TRÚ" Foreground="#718292" FontSize="10" FontWeight="Bold"/>
+            <Grid Margin="0,7,0,17">
+                <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                <StackPanel><TextBlock x:Name="BookingCodeText" Text="Chọn booking đang lưu trú" Foreground="{StaticResource Muted}" FontSize="11" FontWeight="Bold"/><TextBlock Text="Dịch vụ lưu trú" Foreground="{StaticResource Navy}" FontSize="27" FontWeight="Bold" Margin="0,4,0,3"/><TextBlock x:Name="RoomStayText" Text="Chọn booking đã check-in để xem và thêm dịch vụ." Foreground="{StaticResource Muted}"/></StackPanel>
+                <Border x:Name="StayStatusBadge" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Background="{StaticResource GreenTint}" CornerRadius="14" Padding="11,7" Visibility="Collapsed"><StackPanel Orientation="Horizontal"><Ellipse Width="7" Height="7" Fill="{StaticResource Green}" Margin="0,0,7,0"/><TextBlock Text="Đang lưu trú" Foreground="{StaticResource Green}" FontWeight="SemiBold" FontSize="11"/></StackPanel></Border>
+            </Grid>
+            <Border x:Name="BookingSelectorPanel" Background="White" BorderBrush="{StaticResource Line}" BorderThickness="1" CornerRadius="9" Padding="16" Margin="0,0,0,16" Visibility="Collapsed">
+                <StackPanel><Grid Margin="0,0,0,10"><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="240"/></Grid.ColumnDefinitions><StackPanel><TextBlock x:Name="BookingSelectorTitleText" Text="Booking đang lưu trú" Foreground="{StaticResource Navy}" FontSize="16" FontWeight="Bold"/><TextBlock Text="Chọn booking hoặc số phòng trước khi gọi dịch vụ." Foreground="{StaticResource Muted}" FontSize="11" Margin="0,3,0,0"/></StackPanel><TextBox x:Name="BookingSearchBox" Grid.Column="1" Style="{StaticResource FieldBox}" VerticalAlignment="Center" ToolTip="Tìm theo mã booking, tên khách hoặc số phòng" TextChanged="BookingSearch_TextChanged"/></Grid>
+                    <DataGrid x:Name="CheckedInBookingsGrid" Height="150" IsReadOnly="True" CanUserResizeRows="False" SelectionMode="Single" SelectionChanged="CheckedInBookings_SelectionChanged">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Mã booking" Binding="{Binding Code}" Width="150"/>
+                            <DataGridTextColumn Header="Khách hàng" Binding="{Binding GuestName}" Width="*"/>
+                            <DataGridTextColumn Header="Phòng" Binding="{Binding RoomNumber}" Width="80"/>
+                            <DataGridTextColumn Header="Nhận phòng" Binding="{Binding CheckIn}" Width="115"/>
+                            <DataGridTextColumn Header="Trả phòng" Binding="{Binding CheckOut}" Width="115"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <TextBlock x:Name="NoBookingsText" Text="Không có booking nào đang CheckedIn." Foreground="{StaticResource Muted}" FontSize="12" HorizontalAlignment="Center" Margin="0,12,0,0" Visibility="Collapsed"/>
+                </StackPanel>
+            </Border>
+            <Grid>
+                <Grid.ColumnDefinitions><ColumnDefinition Width=".95*"/><ColumnDefinition Width="16"/><ColumnDefinition Width="1.25*"/></Grid.ColumnDefinitions>
+                <Border Grid.Column="0" Background="White" BorderBrush="{StaticResource Line}" BorderThickness="1" CornerRadius="9" Padding="18">
+                    <StackPanel>
+                        <TextBlock Text="Thêm dịch vụ" Foreground="{StaticResource Navy}" FontSize="17" FontWeight="Bold"/>
+                        <TextBlock Text="Dịch vụ được tính vào hóa đơn khi check-out." Foreground="{StaticResource Muted}" FontSize="11" Margin="0,3,0,17"/>
+                        <TextBlock Text="Dịch vụ đang hoạt động" Style="{StaticResource FieldLabel}"/>
+                        <ComboBox x:Name="ServiceCombo" Style="{StaticResource FieldCombo}" SelectionChanged="ServiceCombo_SelectionChanged" Margin="0,0,0,15">
+                            <ComboBox.ItemTemplate><DataTemplate><Grid Width="300"><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><StackPanel><TextBlock Text="{Binding Name}" Foreground="#111111" FontWeight="SemiBold"/><TextBlock Text="Đang hoạt động" Foreground="{StaticResource Green}" FontSize="10"/></StackPanel><TextBlock Grid.Column="1" Text="{Binding UnitPrice, StringFormat={}{0:N0} ₫}" Foreground="{StaticResource Navy}" VerticalAlignment="Center"/></Grid></DataTemplate></ComboBox.ItemTemplate>
+                        </ComboBox>
+                        <Grid Margin="0,0,0,14"><Grid.ColumnDefinitions><ColumnDefinition Width=".7*"/><ColumnDefinition Width="12"/><ColumnDefinition Width="1*"/></Grid.ColumnDefinitions><StackPanel><TextBlock Text="Số lượng" Style="{StaticResource FieldLabel}"/><TextBox x:Name="QuantityBox" Style="{StaticResource FieldBox}" Text="1" TextChanged="Quantity_TextChanged"/></StackPanel><StackPanel Grid.Column="2"><TextBlock Text="Đơn giá" Style="{StaticResource FieldLabel}"/><TextBlock x:Name="UnitPriceText" Text="—" Foreground="#111111" VerticalAlignment="Center" Height="36"/></StackPanel></Grid>
+                        <Border Background="#F7F9FB" BorderBrush="{StaticResource Line}" BorderThickness="1" CornerRadius="6" Padding="11" Margin="0,0,0,15"><Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock Text="Thành tiền" Foreground="#111111" FontWeight="SemiBold"/><TextBlock x:Name="LineTotalText" Grid.Column="1" Text="0 ₫" Foreground="{StaticResource Navy}" FontWeight="Bold"/></Grid></Border>
+                        <Button x:Name="AddServiceButton" Style="{StaticResource PrimaryButton}" HorizontalAlignment="Left" Content="Gọi dịch vụ" Click="AddService_Click" IsEnabled="False"/>
+                        <TextBlock x:Name="ServiceMessageText" Text="Chọn một booking CheckedIn để bắt đầu." Foreground="{StaticResource Muted}" FontSize="11" TextWrapping="Wrap" Margin="0,12,0,0"/>
+                    </StackPanel>
+                </Border>
+                <Border Grid.Column="2" Background="White" BorderBrush="{StaticResource Line}" BorderThickness="1" CornerRadius="9" Padding="18">
+                    <StackPanel>
+                        <Grid Margin="0,0,0,13"><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><StackPanel><TextBlock Text="Dịch vụ đã sử dụng" Foreground="{StaticResource Navy}" FontSize="17" FontWeight="Bold"/><TextBlock Text="Các khoản sẽ cộng vào hóa đơn lưu trú." Foreground="{StaticResource Muted}" FontSize="11" Margin="0,3,0,0"/></StackPanel><TextBlock x:Name="ServiceTotalText" Grid.Column="1" Text="0 ₫" Foreground="{StaticResource Navy}" FontSize="15" FontWeight="Bold" VerticalAlignment="Center"/></Grid>
+                        <DataGrid x:Name="ServiceOrdersGrid" Height="280" IsReadOnly="True" CanUserResizeRows="False" SelectionMode="Single">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Dịch vụ" Binding="{Binding Name}" Width="*"/>
+                                <DataGridTextColumn Header="SL" Binding="{Binding Quantity}" Width="42"/>
+                                <DataGridTextColumn Header="Đơn giá" Binding="{Binding UnitPrice, StringFormat={}{0:N0} ₫}" Width="95"/>
+                                <DataGridTextColumn Header="Thành tiền" Binding="{Binding TotalPrice, StringFormat={}{0:N0} ₫}" Width="105"/>
+                                <DataGridTextColumn Header="Thời gian" Binding="{Binding UsedAt}" Width="120"/>
+                                <DataGridTemplateColumn Header=""><DataGridTemplateColumn.CellTemplate><DataTemplate><Button Content="Xóa" Tag="{Binding ServiceOrderId}" Style="{StaticResource OutlineButton}" Padding="7,4" Click="RemoveService_Click" IsEnabled="{Binding CanRemove}"/></DataTemplate></DataGridTemplateColumn.CellTemplate></DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <TextBlock x:Name="NoServiceOrdersText" Text="Booking này chưa có dịch vụ nào." Foreground="{StaticResource Muted}" FontSize="12" HorizontalAlignment="Center" Margin="0,12,0,0" Visibility="Collapsed"/>
+                        <TextBlock Text="Giá hiển thị theo đơn giá được lưu tại thời điểm thêm dịch vụ." Foreground="{StaticResource Muted}" FontSize="10" TextWrapping="Wrap" Margin="0,10,0,0"/>
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </StackPanel>
+    </ScrollViewer>
+</Page>

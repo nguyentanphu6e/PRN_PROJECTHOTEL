@@ -1,0 +1,36 @@
+<Window x:Class="HotelManagement.Pages.RoomDetailsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Chi tiết phòng"
+        Width="520"
+        SizeToContent="Height"
+        MinHeight="390"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterOwner"
+        ShowInTaskbar="False"
+        Background="#F4F6F8">
+    <StackPanel Margin="24">
+        <Border Height="150" CornerRadius="8" Background="#A7B2AE" Margin="0,0,0,18">
+            <StackPanel VerticalAlignment="Bottom" Margin="18,0,0,15">
+                <TextBlock x:Name="RoomTypeNameText" Foreground="White" FontSize="18" FontWeight="Bold"/>
+                <TextBlock x:Name="RoomNumberText" Foreground="White" FontSize="12" Margin="0,4,0,0"/>
+            </StackPanel>
+        </Border>
+        <TextBlock Text="Thông tin phòng" Foreground="#17324D" FontSize="20" FontWeight="Bold" Margin="0,0,0,14"/>
+        <Grid Margin="0,0,0,18">
+            <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+            <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Grid.Column="0" Margin="0,0,10,12"><TextBlock Text="Mã phòng" Foreground="#64788B" FontSize="11"/><TextBlock x:Name="RoomNumberValue" Foreground="#111111" FontSize="14" FontWeight="SemiBold" Margin="0,3,0,0"/></StackPanel>
+            <StackPanel Grid.Row="0" Grid.Column="1" Margin="0,0,0,12"><TextBlock Text="Loại phòng" Foreground="#64788B" FontSize="11"/><TextBlock x:Name="RoomTypeValue" Foreground="#111111" FontSize="14" FontWeight="SemiBold" Margin="0,3,0,0"/></StackPanel>
+            <StackPanel Grid.Row="1" Grid.Column="0" Margin="0,0,10,12"><TextBlock Text="Tầng" Foreground="#64788B" FontSize="11"/><TextBlock x:Name="FloorValue" Foreground="#111111" FontSize="14" FontWeight="SemiBold" Margin="0,3,0,0"/></StackPanel>
+            <StackPanel Grid.Row="1" Grid.Column="1" Margin="0,0,0,12"><TextBlock Text="Sức chứa tối đa" Foreground="#64788B" FontSize="11"/><TextBlock x:Name="CapacityValue" Foreground="#111111" FontSize="14" FontWeight="SemiBold" Margin="0,3,0,0"/></StackPanel>
+            <StackPanel Grid.Row="2" Grid.Column="0" Margin="0,0,10,12"><TextBlock Text="Giá mỗi đêm" Foreground="#64788B" FontSize="11"/><TextBlock x:Name="PriceValue" Foreground="#111111" FontSize="14" FontWeight="SemiBold" Margin="0,3,0,0"/></StackPanel>
+            <StackPanel Grid.Row="2" Grid.Column="1" Margin="0,0,0,12"><TextBlock Text="Tình trạng" Foreground="#64788B" FontSize="11"/><TextBlock Text="Có thể đặt trong thời gian đã chọn" Foreground="#111111" FontSize="13" FontWeight="SemiBold" TextWrapping="Wrap" Margin="0,3,0,0"/></StackPanel>
+            <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"><TextBlock Text="Tổng tiền phòng dự kiến" Foreground="#64788B" FontSize="11"/><TextBlock x:Name="EstimatedTotalValue" Foreground="#17324D" FontSize="18" FontWeight="Bold" Margin="0,3,0,0"/></StackPanel>
+        </Grid>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="Đóng" MinWidth="92" Margin="0,0,8,0" Padding="12,8" Style="{StaticResource OutlineButton}" Click="Close_Click"/>
+            <Button Content="Chọn phòng" MinWidth="112" Padding="14,8" Style="{StaticResource PrimaryButton}" Click="ChooseRoom_Click"/>
+        </StackPanel>
+    </StackPanel>
+</Window>

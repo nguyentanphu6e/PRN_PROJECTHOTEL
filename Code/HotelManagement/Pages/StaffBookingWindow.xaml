@@ -1,0 +1,32 @@
+<Window x:Class="HotelManagement.Pages.StaffBookingWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Tạo booking"
+        Width="560"
+        SizeToContent="Height"
+        MinHeight="620"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterOwner"
+        ShowInTaskbar="False"
+        Background="{StaticResource PageBackground}">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="24">
+            <TextBlock Text="BOOKING MỚI" Foreground="#718292" FontSize="10" FontWeight="Bold"/>
+            <TextBlock Text="Tạo đặt phòng" Foreground="{StaticResource Navy}" FontSize="24" FontWeight="Bold" Margin="0,5,0,4"/>
+            <TextBlock Text="Chọn khách, thời gian lưu trú và phòng còn trống." Foreground="{StaticResource Muted}" Margin="0,0,0,18"/>
+            <Border Background="White" BorderBrush="{StaticResource Line}" BorderThickness="1" CornerRadius="8" Padding="18">
+                <StackPanel>
+                    <TextBlock Text="Khách hàng" Style="{StaticResource FieldLabel}"/>
+                    <ComboBox x:Name="CustomerCombo" Style="{StaticResource FieldCombo}" DisplayMemberPath="FullName" SelectionChanged="Customer_SelectionChanged" Margin="0,0,0,13"/>
+                    <Grid Margin="0,0,0,13"><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="12"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions><StackPanel><TextBlock Text="Tên khách lưu trú" Style="{StaticResource FieldLabel}"/><TextBox x:Name="GuestNameBox" Style="{StaticResource FieldBox}"/></StackPanel><StackPanel Grid.Column="2"><TextBlock Text="Số điện thoại" Style="{StaticResource FieldLabel}"/><TextBox x:Name="GuestPhoneBox" Style="{StaticResource FieldBox}"/></StackPanel></Grid>
+                    <Grid Margin="0,0,0,13"><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="12"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions><StackPanel><TextBlock Text="Ngày nhận phòng" Style="{StaticResource FieldLabel}"/><DatePicker x:Name="CheckInPicker" Height="36" SelectedDateChanged="StayCriteria_Changed"/></StackPanel><StackPanel Grid.Column="2"><TextBlock Text="Ngày trả phòng" Style="{StaticResource FieldLabel}"/><DatePicker x:Name="CheckOutPicker" Height="36" SelectedDateChanged="StayCriteria_Changed"/></StackPanel></Grid>
+                    <Grid Margin="0,0,0,14"><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="12"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><StackPanel><TextBlock Text="Số khách" Style="{StaticResource FieldLabel}"/><ComboBox x:Name="GuestsCombo" Style="{StaticResource FieldCombo}" SelectedIndex="0" SelectionChanged="StayCriteria_Changed"><ComboBoxItem Content="1 khách" Tag="1"/><ComboBoxItem Content="2 khách" Tag="2"/><ComboBoxItem Content="3 khách" Tag="3"/><ComboBoxItem Content="4 khách" Tag="4"/></ComboBox></StackPanel><Button x:Name="SearchRoomsButton" Grid.Column="2" Style="{StaticResource OutlineButton}" Content="Tìm phòng trống" VerticalAlignment="Bottom" Click="SearchRooms_Click"/></Grid>
+                    <TextBlock Text="Phòng còn trống" Style="{StaticResource FieldLabel}"/>
+                    <ComboBox x:Name="RoomCombo" Style="{StaticResource FieldCombo}" DisplayMemberPath="Label" SelectionChanged="Room_SelectionChanged" Margin="0,0,0,10"/>
+                    <TextBlock x:Name="PriceSummaryText" Text="Chọn ngày và tìm phòng để xem chi phí." Foreground="{StaticResource Muted}" FontSize="12" TextWrapping="Wrap" Margin="0,0,0,16"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right"><Button Content="Đóng" Style="{StaticResource OutlineButton}" Margin="0,0,8,0" Click="Close_Click"/><Button x:Name="CreateBookingButton" Content="Tạo booking Pending" Style="{StaticResource PrimaryButton}" Click="CreateBooking_Click" IsEnabled="False"/></StackPanel>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </ScrollViewer>
+</Window>
